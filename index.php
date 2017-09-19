@@ -15,6 +15,5 @@ if (!empty($_POST)) {
     $obj->ajaxSet($_POST);
 }
 
-// проверка отправки git
 $obj->IncludeTemplate('index', null);
 ?>
