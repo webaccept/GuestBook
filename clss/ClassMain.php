@@ -7,6 +7,11 @@ class ClassMain
 
     }
 
+    /**
+     * @param string $Action
+     * @param null $data
+     * @throws Exception
+     */
     public function IncludeTemplate($Action = '', $data = null)
     {
         if (is_file($file = PATH.'/tpl/'.$Action.'.php')){
@@ -16,6 +21,9 @@ class ClassMain
         }
     }
 
+    /**
+     * @param $Param
+     */
     public function ajaxSet($Param)
     {
         $action       = !empty($Param['action'])? $Param['action'] : '';
@@ -58,12 +66,6 @@ class ClassMain
      */
     public function ReadXMLFile ($is_login, $id = 0, $parent_id = 0)
     {
-        /*
-        $xmlr = new StoreXMLReader();
-        //$r = $xmlr->parse(PATH.'/upload/example.xml');
-        $r = $xmlr->parse(GB);
-        */
-
         $doc = new DOMDocument();
         if (@$doc->load(GB) === false) {
             throw new Exception('Cound\'t load file: "'.GB.'"!');
@@ -88,6 +90,13 @@ class ClassMain
         }
     }
 
+    /**
+     * @param $id
+     * @param $parent_id
+     * @param $publish_date
+     * @param $message
+     * @throws Exception
+     */
     public function AddNewMessage($id, $parent_id, $publish_date, $message)
     {
         $doc = new DOMDocument();
@@ -112,32 +121,13 @@ class ClassMain
         $new_book->appendChild ($new_message);
         $parent->item(0)->insertBefore($new_book, $next->item(0));
 
-        /*
-        $book = $doc->appendChild($doc->createElement('book'));
-
-        $data_id = $book->appendChild($doc->createElement('id'));
-        $data_id->appendChild($doc->createTextNode($id));
-
-        $data_parent_id = $book->appendChild($doc->createElement('parent_id'));
-        $data_parent_id->appendChild($doc->createTextNode($parent_id));
-
-        $data_publish_date = $book->appendChild($doc->createElement('publish_date'));
-        $data_publish_date->appendChild($doc->createTextNode($publish_date));
-
-        $data_message = $book->appendChild($doc->createElement('message'));
-        $data_message->appendChild($doc->createTextNode($message));
-
-        $doc->formatOutput = true;
-
-        $gb = $doc->saveXML();
-        */
-
         $doc->save(PATH.'/upload/gb.xml');
-
-
-
     }
 
+    /**
+     * @return int
+     * @throws Exception
+     */
     public function CountXMLElements()
     {
         $doc = new DOMDocument();
@@ -149,6 +139,9 @@ class ClassMain
     }
 }
 
+/**
+ * @param $array
+ */
 function pa($array)
 {
     $args = func_get_args();
