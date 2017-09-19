@@ -1,0 +1,103 @@
+/* Main */
+body{
+    font-family: "Trebuchet MS", sans-serif;
+    margin: 50px;
+}
+.demoHeaders {
+    margin-top: 2em;
+}
+.icons {
+    margin: 0;
+    padding: 0;
+
+    & li {
+        margin: 2px;
+        position: relative;
+        padding: 4px 0;
+        cursor: pointer;
+        float: left;
+        list-style: none;
+    }
+
+    & span.ui-icon {
+        float: left;
+        margin: 0 4px;
+    }
+}
+label, input {
+    display:block;
+}
+input {
+    width: 218px;
+
+    &[name=login] {
+        margin-bottom: 10px;
+    }
+}
+fieldset {
+    /*width: 218px;*/
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+.wrapper {
+    position: relative;
+    min-width: 160px;
+    max-width: 800px;
+    /*width: 800px;*/
+    margin: 0 auto;
+}
+.auth {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+.answer {
+    padding-left: 20px;
+}
+.disabled {
+    display:none;
+}
+#message {
+    width: 100%;
+}
+.error {
+    color:red;
+    font-size: 0.9em;
+    text-align: center;
+}
+hr {
+    display: block;
+    border: none;
+    color: #c5c5c5;
+    background-color: #c5c5c5;
+    height: 1px;
+
+}
+#dialog, #dialog-comment-form {
+    display: none;
+}
+.list {
+    position: relative;
+    @include clearfix();
+    padding: 5px 0 10px;
+    border-bottom: #c5c5c5 solid 1px;
+
+    .datetime {
+        margin-top: 2px;
+        display: inline-block;
+        font-size: 0.8em;
+        color: #666666;
+        @include clearfix();
+    }
+
+    .action {
+        display: inline-block;
+        color: #5e9ed6;
+        @include clearfix();
+
+        span {
+            cursor: pointer;
+        }
+    }
+}
