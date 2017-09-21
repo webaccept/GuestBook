@@ -193,7 +193,7 @@ function EditMessage(auth, id, parent_id) {
         var data = JSON.parse(e);
         $('#dialog-comment-form form input[name=id]').val(data.id);
         $('#dialog-comment-form form input[name=parent_id]').val(data.parent_id);
-        $('#dialog-comment-form form textarea[name=message]').val(data.message);
+        $('#dialog-comment-form form textarea[name=message]').val(data.message.replace(/[\s{2,}]+/g, ' '));
         $('#dialog-comment-form form input[name=action]').val('edit_message');
         $('#dialog-comment-form').dialog("open");
         //console.log(data);

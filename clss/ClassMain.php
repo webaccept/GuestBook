@@ -158,24 +158,10 @@ class ClassMain
 
             $book = $doc->getElementById($id);
 
-            //$new_message = $doc->createElement('message', $message);
-            //$new_book->appendChild($new_message);
+            $oldmessages = $book->getElementsByTagName("message");
+            $oldmessages->item(0)->firstChild->nodeValue = $message;
 
-
-            //$oldmessages = $book->getElementsByTagName("message");
-            //$data['message'] = $messages->item(0)->nodeValue;
-
-
-            //$new_message = $doc->createElement('message', $message);
-
-            //$xpath = new DOMXpath($doc);
-            //$nodelist = $xpath->query('//catalog/book');
-            //$oldnode = $nodelist->item(0);
-
-            //$newnode = $dom->importNode($parent->documentElement, true);
-            //$oldnode->parentNode->replaceChild($newnode, $oldnode);
-
-
+            $doc->save(PATH . '/upload/gb.xml');
         }
     }
 
