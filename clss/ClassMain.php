@@ -28,8 +28,8 @@ class ClassMain
     {
         $action       = !empty($Param['action'])? $Param['action'] : '';
         $is_login     = !empty($Param['auth'])? $Param['auth'] : 0;
-        $id           = !empty($Param['id'])? $Param['id'] : null;
-        $parent_id    = !empty($Param['parent_id'])? $Param['parent_id'] : 0;
+        $id = (isset($Param['id']) && $Param['id'] != 'undefined') ? $Param['id'] : 0;
+        $parent_id = (isset($Param['parent_id']) && $Param['parent_id'] != 'undefined') ? $Param['parent_id'] : 0;
         $publish_date = !empty($Param['publish_date'])? $Param['publish_date'] : '';
         $message      = !empty($Param['message'])? $Param['message'] : '';
 
@@ -51,6 +51,9 @@ class ClassMain
             case 'new_message':
                 self::AddNewMessage($id, $parent_id, $publish_date, $message);
                 break;
+            case 'edit_message':
+                self::EditMessage($is_login, $id, $parent_id, $publish_date, $message);
+                break;
             default:
                 break;
         }
@@ -67,26 +70,112 @@ class ClassMain
     public function ReadXMLFile ($is_login, $id = 0, $parent_id = 0)
     {
         $doc = new DOMDocument();
-        if (@$doc->load(GB) === false) {
+        $doc->validateOnParse = true;
+        if (@$doc->loadHTMLFile(GB) === false) {
             throw new Exception('Cound\'t load file: "'.GB.'"!');
         }
+        $doc->preserveWhiteSpace = false;
 
         $data = [];
         $data['is_login'] = !empty($is_login)? $is_login : 0;
-        $data['id'] = (isset($id) && $id != 'undefined')? $id : 0;
-        $data['parent_id'] = (isset($parent_id) && $parent_id != 'undefined')? $parent_id : 0;
+        $id = (isset($id) && $id != 'undefined') ? $id : 0;
+        $parent_id = (isset($parent_id) && $parent_id != 'undefined') ? $parent_id : 0;
 
-        if ($data['id'] == 0 && $data['parent_id'] == 0) {
+        if (empty($id) && empty($parent_id)) {
             $books = $doc->getElementsByTagName("book");
             foreach ($books as $book) {
+                $data['id'] = $book->getAttribute("id");
+                $data['parent_id'] = $book->getAttribute("parent_id");
+
+                $publishers = $book->getElementsByTagName("publish_date");
+                $data['publish_date'] = $publishers->item(0)->nodeValue;
+
+                $messages = $book->getElementsByTagName("message");
+                $data['message'] = $messages->item(0)->nodeValue;
+                if ($data['parent_id'] == 0) {
+                    $this->IncludeTemplate('list', $data);
+                }
+            }
+        } else {
+            $book = $doc->getElementById($id);
+
+            $data['id'] = $book->getAttribute("id");
+            $data['parent_id'] = $book->getAttribute("parent_id");
+
+            $publishers = $book->getElementsByTagName("publish_date");
+            $data['publish_date'] = $publishers->item(0)->nodeValue;
+
+            $messages = $book->getElementsByTagName("message");
+            $data['message'] = $messages->item(0)->nodeValue;
+
+            echo json_encode($data);
+        }
+    }
+
+    public function SubReadXML($is_login, $id = 0, $parent_id = 0)
+    {
+        $doc = new DOMDocument();
+        $doc->validateOnParse = true;
+        if (@$doc->loadHTMLFile(GB) === false) {
+            throw new Exception('Cound\'t load file: "' . GB . '"!');
+        }
+        $doc->preserveWhiteSpace = false;
+
+        $data = [];
+        $data['is_login'] = !empty($is_login) ? $is_login : 0;
+        $id = (isset($id) && $id != 'undefined') ? $id : 0;
+        $parent_id = (isset($parent_id) && $parent_id != 'undefined') ? $parent_id : 0;
+
+        if (!empty($id)) {
+            $books = $doc->getElementsByTagName("book");
+            foreach ($books as $book) {
+                $data['id'] = $book->getAttribute("id");
+                $data['parent_id'] = $book->getAttribute("parent_id");
+
                 $publishers = $book->getElementsByTagName("publish_date");
                 $data['publish_date'] = $publishers->item(0)->nodeValue;
 
                 $messages = $book->getElementsByTagName("message");
                 $data['message'] = $messages->item(0)->nodeValue;
 
-                $this->IncludeTemplate('list', $data);
+                if ($data['parent_id'] == $id) {
+                    $this->IncludeTemplate('list', $data);
+                }
             }
+        }
+    }
+
+    public function EditMessage($is_login, $id, $parent_id, $publish_date, $message)
+    {
+        if (isset($is_login) && $is_login == 1) {
+
+            $doc = new DOMDocument();
+            $doc->validateOnParse = true;
+            if (@$doc->loadHTMLFile(GB) === false) {
+                throw new Exception('Cound\'t load file: "' . GB . '"!');
+            }
+            $doc->preserveWhiteSpace = false;
+
+            $book = $doc->getElementById($id);
+
+            //$new_message = $doc->createElement('message', $message);
+            //$new_book->appendChild($new_message);
+
+
+            //$oldmessages = $book->getElementsByTagName("message");
+            //$data['message'] = $messages->item(0)->nodeValue;
+
+
+            //$new_message = $doc->createElement('message', $message);
+
+            //$xpath = new DOMXpath($doc);
+            //$nodelist = $xpath->query('//catalog/book');
+            //$oldnode = $nodelist->item(0);
+
+            //$newnode = $dom->importNode($parent->documentElement, true);
+            //$oldnode->parentNode->replaceChild($newnode, $oldnode);
+
+
         }
     }
 
@@ -105,20 +194,29 @@ class ClassMain
         }
 
         $xpath = new DOMXPath($doc);
-        $parent = $xpath->query ('//catalog');
-        $next = $xpath->query ('//catalog/book');
+        $parent = $xpath->query('//catalog');
+        $next = $xpath->query('//catalog/book');
 
-        $new_book = $doc->createElement ('book');
+        $new_book = $doc->createElement('book');
 
-        $new_id = $doc->createElement ('id', $id);
-        $new_parent_id = $doc->createElement ('parent_id', $parent_id);
-        $new_publish_date = $doc->createElement ('publish_date', $publish_date);
-        $new_message = $doc->createElement ('message', $message);
+        $new_id = $doc->createAttribute("id");
+        $new_parent_id = $doc->createAttribute("parent_id");
+        $new_publish_date = $doc->createElement('publish_date', $publish_date);
+        $new_message = $doc->createElement('message', $message);
 
-        $new_book->appendChild ($new_id);
-        $new_book->appendChild ($new_parent_id);
-        $new_book->appendChild ($new_publish_date);
-        $new_book->appendChild ($new_message);
+        $new_book->appendChild($new_id);
+        $new_book->appendChild($new_parent_id);
+
+        $node_id = $doc->createTextNode($id);
+        $new_id->appendChild($node_id);
+        $new_book->setIdAttribute("id", true);
+
+        $node_parent_id = $doc->createTextNode($parent_id);
+        $new_parent_id->appendChild($node_parent_id);
+        $new_book->setIdAttribute("parent_id", true);
+
+        $new_book->appendChild($new_publish_date);
+        $new_book->appendChild($new_message);
         $parent->item(0)->insertBefore($new_book, $next->item(0));
 
         $doc->save(PATH.'/upload/gb.xml');
@@ -140,6 +238,7 @@ class ClassMain
 }
 
 /**
+ * Отладочная функция
  * @param $array
  */
 function pa($array)

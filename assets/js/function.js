@@ -86,7 +86,7 @@ $(document).ready(function() {
                             $.ajax({
                                 type: 'POST',
                                 url: '/',
-                                data: form.serialize() + '&publish_date=' + publish_date,
+                                data: form.serialize() + '&publish_date=' + publish_date + '&auth=' + localStorage.getItem('auth'),
                                 dataType: 'html'
                             }).done(function (e) {
                                 console.log(e);
@@ -132,7 +132,6 @@ $(document).ready(function() {
     );
 
     getListMassage();
-
 });
 
 function FuncCounter()
@@ -181,8 +180,37 @@ function readXML(auth, id, parent_id)
         dataType: 'html'
     }).done(function(e) {
         $('.item').html(e);
-        //console.log('success');
-    }).fail(function() {
-        //console.log('fail');
     });
+}
+
+function EditMessage(auth, id, parent_id) {
+    $.ajax({
+        type: 'POST',
+        url: '/',
+        data: 'auth=' + auth + '&id=' + id + '&parent_id=' + parent_id + '&action=read',
+        dataType: 'html'
+    }).done(function (e) {
+        var data = JSON.parse(e);
+        $('#dialog-comment-form form input[name=id]').val(data.id);
+        $('#dialog-comment-form form input[name=parent_id]').val(data.parent_id);
+        $('#dialog-comment-form form textarea[name=message]').val(data.message);
+        $('#dialog-comment-form form input[name=action]').val('edit_message');
+        $('#dialog-comment-form').dialog("open");
+        //console.log(data);
+    });
+}
+
+function AnswerMessage(id, parent_id) {
+    $('#dialog-comment-form form textarea[name=message]').val('');
+    $.ajax({
+        type: 'POST',
+        url: '/',
+        data: 'action=count',
+        dataType: 'html'
+    }).done(function (e) {
+        $('#dialog-comment-form form input[name=id]').val(++e);
+    });
+    $('#dialog-comment-form form input[name=parent_id]').val(parent_id);
+    $('#dialog-comment-form form input[name=action]').val('new_message');
+    $('#dialog-comment-form').dialog("open");
 }

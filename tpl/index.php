@@ -13,12 +13,11 @@
 <div id="dialog-comment-form" title="Сообщение">
     <form>
         <fieldset>
-            <label for="message">Сообщение:</label>
+            <!-- <label for="message">Сообщение:</label> -->
             <textarea name="message" id="message" class="text ui-widget-content ui-corner-all"></textarea>
             <input type="hidden" name="id">
             <input type="hidden" name="parent_id">
             <input type="hidden" name="action">
-
         </fieldset>
     </form>
 </div>
