@@ -16,4 +16,3 @@ if (!empty($_POST)) {
 }
 
 $obj->IncludeTemplate('index', null);
-?>
