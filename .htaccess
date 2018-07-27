@@ -6,6 +6,9 @@ Options -Indexes
 
 # Blocking proxies
 RewriteEngine on
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R=301,L]
+
 RewriteCond %{HTTP:VIA}                 !^$ [OR]
 RewriteCond %{HTTP:FORWARDED}           !^$ [OR]
 RewriteCond %{HTTP:USERAGENT_VIA}       !^$ [OR]

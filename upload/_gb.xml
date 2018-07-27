@@ -1,63 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <catalog>
-    <book>
-        <id>1</id>
-        <parent_id>0</parent_id>
+    <book id="1" parent_id="0">
         <publish_date>2017-10-01 10:22:53</publish_date>
-        <message>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
+        <message>1. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
     </book>
-    <book>
-        <id>2</id>
-        <parent_id>0</parent_id>
+    <book id="2" parent_id="0">
         <publish_date>2017-10-01 10:22:53</publish_date>
-        <message>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
+        <message>2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
     </book>
-    <book>
-        <id>3</id>
-        <parent_id>0</parent_id>
+    <book id="3" parent_id="0">
         <publish_date>2017-10-01 10:22:53</publish_date>
-        <message>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
+        <message>3. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
     </book>
-    <book>
-        <id>4</id>
-        <parent_id>0</parent_id>
+    <book id="4" parent_id="0">
         <publish_date>2017-10-01 10:22:53</publish_date>
-        <message>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
+        <message>4. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
     </book>
-    <book>
-        <id>5</id>
-        <parent_id>0</parent_id>
+    <book id="5" parent_id="0">
         <publish_date>2017-10-01 10:22:53</publish_date>
-        <message>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
+        <message>5. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
     </book>
-    <book>
-        <id>6</id>
-        <parent_id>0</parent_id>
+    <book id="6" parent_id="0">
         <publish_date>2017-10-01 10:22:53</publish_date>
-        <message>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
+        <message>6. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
     </book>
-    <book>
-        <id>7</id>
-        <parent_id>0</parent_id>
+    <book id="7" parent_id="0">
         <publish_date>2017-10-01 10:22:53</publish_date>
-        <message>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
+        <message>7. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
     </book>
-    <book>
-        <id>8</id>
-        <parent_id>0</parent_id>
+    <book id="8" parent_id="0">
         <publish_date>2017-10-01 10:22:53</publish_date>
-        <message>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
+        <message>8. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
     </book>
-    <book>
-        <id>9</id>
-        <parent_id>0</parent_id>
+    <book id="9" parent_id="0">
         <publish_date>2017-10-01 10:22:53</publish_date>
-        <message>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
+        <message>9. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
     </book>
-    <book>
-        <id>10</id>
-        <parent_id>0</parent_id>
+    <book id="10" parent_id="0">
         <publish_date>2017-10-01 10:22:53</publish_date>
-        <message>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
+        <message>10. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</message>
     </book>
 </catalog>

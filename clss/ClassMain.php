@@ -151,14 +151,13 @@ class ClassMain
 
             $doc = new DOMDocument();
             $doc->validateOnParse = true;
-            if (@$doc->loadHTMLFile(GB) === false) {
+            if (@$doc->load(GB) === false) { // loadHTMLFile
                 throw new Exception('Cound\'t load file: "' . GB . '"!');
             }
-            $doc->preserveWhiteSpace = false;
+            $xp = new DomXPath($doc);
+            $book = $xp->query("//*[@id = '{$id}']");
 
-            $book = $doc->getElementById($id);
-
-            $oldmessages = $book->getElementsByTagName("message");
+            $oldmessages = $book->item(0)->getElementsByTagName("message");
             $oldmessages->item(0)->firstChild->nodeValue = $message;
 
             $doc->save(PATH . '/upload/gb.xml');
