@@ -1,18 +1,21 @@
 <?php
 define('PATH', $_SERVER['DOCUMENT_ROOT']);
-define('GB', PATH.'/upload/gb.xml');
+define('GB', PATH . '/upload/gb.xml');
 
 spl_autoload_register(function ($class) {
-    $path = PATH . '/clss/' . $class . '.php';
+    $path = PATH . '/classes/' . $class . '.php';
     if (file_exists($path)) {
         include $path;
     }
 });
 
-$obj = new ClassMain();
+$obj = new MainClass();
 
 if (!empty($_POST)) {
     $obj->ajaxSet($_POST);
 }
 
-$obj->IncludeTemplate('index', null);
+try {
+    $obj->IncludeTemplate('index');
+} catch (Exception $e) {
+}

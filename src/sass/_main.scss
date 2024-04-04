@@ -1,11 +1,14 @@
 /* Main */
-body{
+body {
     font-family: "Trebuchet MS", sans-serif;
     margin: 50px;
+    background-color: #ffffff;
 }
+
 .demoHeaders {
     margin-top: 2em;
 }
+
 .icons {
     margin: 0;
     padding: 0;
@@ -24,59 +27,79 @@ body{
         margin: 0 4px;
     }
 }
-label, input {
-    display:block;
+
+label, input, textarea {
+    display: block;
+    outline: 0;
 }
-input {
-    width: 218px;
+
+input, textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: .5rem;
 
     &[name=login] {
         margin-bottom: 10px;
     }
 }
+
 fieldset {
-    /*width: 218px;*/
     padding: 0;
     margin: 0;
     border: 0;
 }
+
 .wrapper {
     position: relative;
     min-width: 160px;
     max-width: 800px;
-    /*width: 800px;*/
     margin: 0 auto;
 }
+
 .auth {
     position: absolute;
     top: 0;
     right: 0;
 }
+
 .answer {
     padding-left: 20px;
 }
+
 .disabled {
-    display:none;
+    display: none;
 }
+
 #message {
     width: 100%;
 }
+
 .error {
-    color:red;
+    color: red;
     font-size: 0.9em;
     text-align: center;
 }
+
 hr {
     display: block;
     border: none;
     color: #c5c5c5;
     background-color: #c5c5c5;
     height: 1px;
-
 }
-#dialog, #dialog-comment-form {
+
+#dialog-auth-form, #dialog-comment-form {
     display: none;
 }
+
+.ui-widget.ui-widget-content {
+    box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+}
+
+.ui-dialog .ui-dialog-buttonpane .ui-dialog-buttonset .ui-corner-all {
+    margin-right: 0;
+}
+
 .list {
     position: relative;
     @include clearfix();

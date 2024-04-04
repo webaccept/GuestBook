@@ -1,6 +1,6 @@
 /* Constants */
 $base-color: #333;
-$image_dir: '/assets/img/';
+$image_dir: '/public/img/';
 
 @mixin clearfix() {
     &:before,
@@ -19,6 +19,7 @@ $image_dir: '/assets/img/';
         content: "";
         display: table;
     }
+
     &:after {
         clear: both;
     }
@@ -33,7 +34,7 @@ $image_dir: '/assets/img/';
         @content;
     }
 
-    &::-moz-placeholder {  /* Firefox 19+ */
+    &::-moz-placeholder { /* Firefox 19+ */
         @content;
     }
 
